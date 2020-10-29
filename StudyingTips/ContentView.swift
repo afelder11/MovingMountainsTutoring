@@ -7,11 +7,39 @@
 
 import SwiftUI
 
+
+
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+    @State var tips: [String] = ["Organize your study space",
+                                  "Take regular breaks",
+                                  "Use flowcharts and diagrams"
+                                  ]
+    
+    
+    init(){
+        UITableView.appearance().backgroundColor = .gray
+        UITableViewCell.appearance().backgroundColor = .gray
+        UITableView.appearance().tableFooterView = UIView()
     }
+    
+    var body: some View {
+        
+        NavigationView {
+            VStack {
+                List (tips, id: \.self){ tip in
+                    Text(tip)
+    
+                }
+                .navigationBarTitle("Studying Tips")
+                
+       
+            }
+            
+        
+        }
+        
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -19,3 +47,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
